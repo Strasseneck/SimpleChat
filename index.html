@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SimpleChat</title>
+    <script src="script.js" defer></script>
+    <script src="jquery.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+	<div id="fullscreen">
+        <div id="header-container">
+            <h1>SimpleChat</h1>
+            <div id="bot-buttons-container">
+                <strong>Choose your chat bot!</strong>
+                <button type="button" id="friendly-bot-btn">Friendly Bot</button>
+                <button type="button" id="unfriendly-bot-btn">Unfriendly Bot</button>
+            </div>
+            <div id="mode-buttons-container">
+                <button type="button" id="light-mode-btn">Light Mode</button>
+                <button type="button" id="dark-mode-btn">Dark Mode</button>
+            </div>
+        </div>
+        <div id="chat-container"></div>
+        <div id="message-compose-container">
+            <form id="compose-form">
+                <textarea id="user-message-compose" placeholder="Write a message..."></textarea>
+                <input type="submit" id="user-message-submit">
+            </form>
+        </div>
+    </div>
+  </body>
+</html>
