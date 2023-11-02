@@ -6,34 +6,34 @@
 
 const friendlyBotResponses = {
 
-    1: 'responseone',
-    2: 'responsetwo',
-    3: 'responsethree',
-    4: 'responsefour',
-    5: 'responsefive'
+    1: 'response one',
+    2: 'response two',
+    3: 'response three',
+    4: 'response four',
+    5: 'response five'
 };
 
 // Unfriendly bot
 
 const unfriendlyBotResponses = {
 
-    1: 'responseone',
-    2: 'responsetwo',
-    3: 'responsethree',
-    4: 'responsefour',
-    5: 'responsefive'
+    1: 'response one',
+    2: 'response two',
+    3: 'response three',
+    4: 'response four',
+    5: 'response five'
 };
 
 // Messaging
 
 // Send new message on click
 $('#user-message-button').on('click', function() {
-    // inner message content 
+    // create user message and display 
     let userInput = $('#user-message-compose').val();
-    let messageText = $('<p>').addClass('user-message-content').text(userInput);
-
-    // message div add to messages 
-    $('<div>').addClass('user-message').append(messageText).appendTo('#messages');
+    $('<div>')
+    .addClass('user-message')
+    .text(userInput)
+    .appendTo('#messages');
 
     // reset the text area to placeholder
     $('#user-message-compose').val('').blur();
@@ -46,12 +46,9 @@ $('#user-message-button').on('click', function() {
 
 function botRespondingAnimation() {
     // show bot typing animation
-    let $replyAnimation = $('<p>').addClass('bot-message-replying');
-    let $replyDiv = $('<div>').addClass('bot-message');
-
-    // show typing animation
-    $replyAnimation.text('...');
-    $replyDiv.append($replyAnimation).appendTo('#messages');
+    $('<p>').addClass('bot-replying')
+    .text('...')
+    .appendTo('#messages');
 
     // trigger actual reply
     setTimeout(() => {
@@ -66,12 +63,15 @@ function botReply() {
      let randomReply = friendlyBotResponses[replyIndex];
     
      // remove animation
-     let $replyAnimation = $('#bot-message-replying');
-     $replyAnimation.remove();
+     $('#bot-replying').remove();
+
+     // create bot message and display 
+    $('<div>')
+    .addClass('bot-message')
+    .text(randomReply)
+    .appendTo('#messages');
+
      
-     // get the last message text content
-     let $lastReply = $('#messages');
-     console.log($lastReply[0]);
 }
 
    
