@@ -24,18 +24,63 @@ const unfriendlyBotResponses = {
     5: 'responsefive'
 };
 
-// Message compose elements and function
+// Messaging
 
 // Send new message on click
 $('#user-message-button').on('click', function() {
-    // inner message content
+    // inner message content 
+    let userInput = $('#user-message-compose').val();
+    let messageText = $('<p>').addClass('user-message-content').text(userInput);
 
-    let content = $('#user-message-compose').val();
-    let innerP = $('<p>').addClass('message-content').text(content);
+    // message div add to messages 
+    $('<div>').addClass('user-message').append(messageText).appendTo('#messages');
 
-    // message div
-    $('<div>').addClass('user-message').append(innerP).appendTo('#messages');
-    
+    // reset the text area to placeholder
+    $('#user-message-compose').val('').blur();
+
+    // trigger bot repsonse
+    setTimeout(() => {
+        botRespondingAnimation();
+    },1000)
 })
 
-// 
+function botRespondingAnimation() {
+    // show bot typing animation
+    let $replyAnimation = $('<p>').addClass('bot-message-replying');
+    let $replyDiv = $('<div>').addClass('bot-message');
+
+    // show typing animation
+    $replyAnimation.text('...');
+    $replyDiv.append($replyAnimation).appendTo('#messages');
+
+    // trigger actual reply
+    setTimeout(() => {
+        botReply();
+    },2000)
+}
+
+
+function botReply() {
+     // generate random reply from options
+     let replyIndex = Math.floor(Math.random() * 5);
+     let randomReply = friendlyBotResponses[replyIndex];
+    
+     // remove animation
+     let $replyAnimation = $('#bot-message-replying');
+     $replyAnimation.remove();
+     
+     // get the last message text content
+     let $lastReply = $('#messages');
+     console.log($lastReply[0]);
+}
+
+   
+
+
+            
+            
+
+       
+       
+
+
