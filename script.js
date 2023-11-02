@@ -85,7 +85,8 @@ $('#send-button').on('click', function() {
 
     // Create the message and display
     $('<div>')
-    .addClass('user-message')
+    .addClass('message')
+    .addClass('user')
     .text(userInput)
     .append(tag)
     .appendTo('#messages')
@@ -100,8 +101,13 @@ $('#send-button').on('click', function() {
 })
 
 function botReply(userInput) {
-    // Generate random reply from options
+    // Generate random reply from options make sure not 0
      let replyIndex = Math.floor(Math.random() * 5);
+     while(replyIndex === 0) {
+        replyIndex = Math.floor(Math.random() * 5);
+     }
+    
+     console.log(replyIndex);
      let randomReply = 'Something has gone wrong!';
 
      if(friendlyBot === true) {
@@ -126,7 +132,8 @@ function botReply(userInput) {
 
     // Create bot message and display 
     $('<div>')
-    .addClass('bot-message')
+    .addClass('message')
+    .addClass('bot')
     .text(randomReply)
     .append(tag)
     .appendTo('#messages');    
