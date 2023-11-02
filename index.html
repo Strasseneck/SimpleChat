@@ -8,35 +8,30 @@
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-	<div id="fullscreen">
-        <div id="header-container" class="flex-container">
-            <h1>SimpleChat<span><div id="mode-buttons-container">
+	<div id="main" class="container">
+        <div id="header-container" class="heading-container">
+            <div class="buttons-container" id="mode-buttons-container">
                 <button type="button" id="light-mode-btn">Light Mode</button>
                 <button type="button" id="dark-mode-btn">Dark Mode</button>
-            </div></span></h1>
-            
-            <div id="bot-buttons-container">
-                <strong>Choose your chat bot!</strong>
+        </div>
+        <div id="header">
+            <h1>SimpleChat</h1>
+        </div>
+            <div id="bot-buttons" class="buttons-container">
                 <button type="button" id="friendly-bot-btn">Friendly Bot</button>
                 <button type="button" id="unfriendly-bot-btn">Unfriendly Bot</button>
                 <button type="button" id="annoying-kid-bot-btn">Annoying Kid Bot</button>
             </div>
-           
         </div>
-        <div id="chat-container" class="flex-container">
-            <div id="chat-history-container">
-                <div id="messages">
+        <div id="chat-container">
+                <div id="messages" class="messages">
                 </div>
-            </div>
         </div>
-        <div id="message-compose-container">
-            <form id="compose-form">
-                <textarea id="user-message-compose" placeholder="Write a message..."></textarea>
-                <input type="button" id="user-message-button">
-            </form>
+        <div class="message-compose-container">
+            <input type="text" id="message-compose-text" class="message-compose-control" placeholder="Write a message...">
+            <button id="send-button">Send</button>
         </div>
     </div>
-    
     <script src="jquery.js"></script>
     <script src="script.js"></script>
   </body>

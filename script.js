@@ -24,7 +24,7 @@ const unfriendlyBotResponses = {
     5: 'How embarrassing! You really are the worst!'
 };
 
-// Annoying kid
+// Annoying kid bot
 
 const annoyingKidResponses = {
    
@@ -33,8 +33,7 @@ const annoyingKidResponses = {
     3: 'LOLOLOLOLOLZZZZZ!!!!',
     4: 'stooooPIiiiiiDDDDD!!!',
     5: 'nanananananana'
-
-}
+};
 
 // Light or Dark
 
@@ -72,9 +71,10 @@ $('#annoying-kid-bot-btn').on('click', function() {
 // Messaging
 
 // Send new message on click
-$('#user-message-button').on('click', function() {
+$('#send-button').on('click', function() {
     // Create user message and display 
-    let userInput = $('#user-message-compose').val();
+    let userInput = $('#message-compose-text').val();
+    console.log(userInput);
 
     // Get current date and time for tag
     let now = new Date();
@@ -91,7 +91,7 @@ $('#user-message-button').on('click', function() {
     .appendTo('#messages')
 
     // Reset the text area to placeholder
-    $('#user-message-compose').val('').blur();
+    $('#message-compose-text').val('').blur();
 
     // Trigger bot repsonse
     setTimeout(() => {
