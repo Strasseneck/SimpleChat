@@ -1,0 +1,41 @@
+/* General Layout */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: rgba(49, 99, 139, 0.965);
+
+}
+
+.container {
+    position: relative;
+    width: 1500px;
+    max-width: 100%;
+    height: calc(100vh - 150px);
+    background: #fdfde2;
+    box-shadow: 0px 3px 20px rgba(0,0,0,0.8);
+    display: flex;
+}
+
+.container .chat-box {
+    position: relative;
+    flex: 80%;
+    background: url(4689.jpg);
+    background-size:30%;
+    opacity: 0.1;
+}
+
+.container .side-bar {
+    position: relative;
+    flex: 20%;
+    background:rgba(204, 227, 246, 0.965)
+}
