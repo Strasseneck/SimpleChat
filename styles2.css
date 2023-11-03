@@ -20,7 +20,7 @@ body {
     position: relative;
     width: 1500px;
     max-width: 100%;
-    height: calc(100vh - 150px);
+    height: calc(100vh - 100px);
     background: #fdfde2;
     box-shadow: 0px 3px 20px rgba(0,0,0,0.8);
     display: flex;
@@ -29,9 +29,9 @@ body {
 .container .chat-box {
     position: relative;
     flex: 80%;
-    background: url(4689.jpg);
+    background-image: url(4689.jpg);
     background-size:30%;
-    opacity: 0.1;
+    opacity: 0.4;
 }
 
 .container .side-bar {
@@ -39,3 +39,71 @@ body {
     flex: 20%;
     background:rgba(204, 227, 246, 0.965)
 }
+
+/* Messages in chat */
+
+.chat-box {
+    position: relative;
+    width: 100%;
+    height: calc(100% - 70px);
+    padding: 40px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.message {
+    position: relative;
+    display: flex;
+    width: 100%;
+    margin: 5px;
+}
+
+.message-user  p {
+    position: relative;
+    right: 0;
+    text-align: right;
+    max-width: 60%;
+    padding: 10px;
+    background: rgba(50, 155, 241, 0.965);
+    border-radius: 12px;
+    font-size: 0.9em;
+    box-shadow: 0px 3px 5px rgba(0,0,0,0.8);
+}
+
+
+.message-bot  p {
+    position: relative;
+    left: 0;
+    text-align: left;
+    max-width: 60%;
+    padding: 10px;
+    background: rgba(50, 155, 241, 0.965);
+    border-radius: 12px;
+    font-size: 0.9em;
+    box-shadow: 0px 3px 5px rgba(0,0,0,0.8);
+}
+
+/* /* add speech bit to messages with pseudo element, does not work in Chrome?! */
+
+.message-user p::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: -10px;
+    background: linear-gradient(45deg,  rgba(50, 155, 241, 0.965) 50%,#fdfde2 50%, transparent 50%, transparent);
+    display: block;
+    width: 20px;
+    height: 20px;
+}
+
+.message-bot p::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: -10px;
+    background: linear-gradient(-45deg,  rgba(50, 155, 241, 0.965) 50%,#fdfde2 50%, transparent 50%, transparent);
+    display: block;
+    width: 20px;
+    height: 20px;
+}
+
