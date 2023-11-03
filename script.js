@@ -72,9 +72,11 @@ $('#annoying-kid-bot-btn').on('click', function() {
 
 // Send new message on click
 $('#send-button').on('click', function() {
+    // Check it was enter key clicked
     // Create user message and display 
     let userInput = $('#message-compose-text').val();
-    console.log(userInput);
+    let messageText = $('<p>')
+    .text(userInput)
 
     // Get current date and time for tag
     let now = new Date();
@@ -86,8 +88,8 @@ $('#send-button').on('click', function() {
     // Create the message and display
     $('<div>')
     .addClass('message')
-    .addClass('user')
-    .text(userInput)
+    .addClass('user-message')
+    .append(messageText)
     .append(tag)
     .appendTo('#messages')
 

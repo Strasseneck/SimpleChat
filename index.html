@@ -24,15 +24,21 @@
             </div>
         </div>
         <div id="chat-container">
-                <div id="messages" class="messages">
-                </div>
-        </div>
-        <div class="message-compose-container">
-            <div class="message-form-group">
-                <input type="text" id="message-compose-text" class="message-compose-control" placeholder="Write a message...">
-                <span class="message-text"><button class="send-button" id="send-button"><img src="send-4008.png"></img></button></span>
+            <div id="messages" class="messages">
+                <div class="bot-messages" id="bot-messages"></div>
+                <div class="user-messages" id="user-messages"></div>
             </div>
-        </div>
+    </div>
+        <div class="message-bottom-bar">
+            <div class="compose-group">
+                <input type="text" id="message-compose-text" class="form-control" autofocus placeholder="Write message...">
+                <div class="compose-group-append ">
+                    <span class="compose-group-text send-icon "><img src="send-4008.png" id="send-button"></img>
+                    </span>
+                </div>
+            </div>
+        </div>    
+
     </div>
     <script src="jquery.js"></script>
     <script src="script.js"></script>
