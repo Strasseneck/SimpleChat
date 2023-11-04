@@ -9,11 +9,25 @@
         <div class="container">           
                 <!--sidebar-->
                 <div class="side-bar">
-                    <strong>Choose Your Bot!</strong>   
-                    <!--bot selection buttons-->                
-                        <button type="button" id="friendly-bot-btn">Friendly Bot</button>
-                        <button type="button" id="unfriendly-bot-btn">Unfriendly Bot</button>
-                        <button type="button" id="annoying-kid-bot-btn">Annoying Kid Bot</button>
+                    <div class="header">
+                        <h1>SimpleChat</h1>
+                        <strong>Choose Your Bot!</strong>
+                    </div>                   
+                    <div class="chats-container">
+                         <!--bot selection buttons-->
+                        <div class="button-container">
+                            <img src="android.png" class="icon-button" type="button" id="friendly-bot-btn">
+                            <label class="button-label" for="friendly-bot-btn">Friendly Bot</label>
+                        </div> 
+                        <div class="button-container">
+                            <img src="bad.png" class="icon-button" type="button" id="unfriendly-bot-btn">
+                            <label class="button-label" for="unfriendly-bot-button">Unfriendly Bot</label>
+                        </div> 
+                        <div class="button-container">
+                            <img src="boy.png" type="button" class="icon-button" id="annoying-kid-bot-btn">
+                            <label class="button-label" for="annoying-kid-bot-btn">Annoying Kid Bot</label>
+                        </div>  
+                    </div>                
                 </div>
                 <!--chatbox-->  
                 <div class="chat-box" id="chat-box">
@@ -23,11 +37,17 @@
                     <div class="message message-bot">
                         <p>This is a sample bot message</p>
                     </div>
+                    <!--chat message input-->
                     <div class="chat-input-container">
+                        <div class="icon-container">
+                            <img class="icon" src="happiness.png">
+                        </div>
                         <input type="text" id="chat-input" class="chat-input" autofocus placeholder=" Write a message...">  
                     </div>                                                    
-                </div>  
-                
-        </div>           
+                </div>           
+        </div>
+        <!--js scripts-->
+        <script src="jquery.js"></script>
+        <script src="script.js"></script>          
     </body>
 </html>
