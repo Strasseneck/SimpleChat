@@ -139,9 +139,16 @@ body {
     font-size: 0.7em;
 }
 
-.tag ::after {
-    content: "\a";
-    white-space: pre;
+.chat-icon {
+    height: 30px;
+    width: 30px;
+    bottom: 0;
+}
+
+.chat-icon-container {
+    margin: 10px;
+    margin-bottom: 0;
+    
 }
 
 /* Chat Input */

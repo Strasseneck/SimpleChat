@@ -95,8 +95,14 @@ $('#chat-input').on('keypress', function(event) {
 
         // Add text content
         let $p = $('<p>').text(userInput).append($tag)
+
+        // User icon
+        let $iconContainer = $('<div>').addClass('chat-icon-container');
+        let $icon = $('<img>').addClass('chat-icon').attr('src', 'user.png');
+        $iconContainer.append($icon);
         
         $newMess.append($p)
+        $newMess.append($iconContainer)
         $newMess.appendTo('#chats');
 
         // Reset the text area to placeholder and refocus
