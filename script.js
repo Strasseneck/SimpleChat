@@ -70,36 +70,41 @@ $('#annoying-kid-bot-btn').on('click', function() {
 
 // Messaging
 
-// Send new message on click
-$('#send-button').on('click', function() {
+// Send new message on enter
+$('#chat-input').on('keypress', function(event) {
+
     // Check it was enter key clicked
-    // Create user message and display 
-    let userInput = $('#message-compose-text').val();
-    let messageText = $('<p>')
-    .text(userInput)
+    if(event.keyCode === 13) {
 
-    // Get current date and time for tag
-    let now = new Date();
-    let date = now.getDate() + '/' + (now.getMonth() +1) + '/' + now.getFullYear();
-    let time = now.getHours() + ':' + now.getMinutes();
-    let dateTime = date + ' ' + time;
-    let tag = $('<div>').addClass('tag').text(dateTime);
+        // Create user message and display 
+        let userInput = $('#chat-input').val();
 
-    // Create the message and display
-    $('<div>')
-    .addClass('message')
-    .addClass('user-message')
-    .append(messageText)
-    .append(tag)
-    .appendTo('#messages')
+        // Get current date and time for tag
+        let now = new Date();
+        let date = now.getDate() + '/' + (now.getMonth() +1) + '/' + now.getFullYear();
+        let time = now.getHours() + ':' + now.getMinutes();
+        let dateTime = date + ' ' + time;
+        let $tag = $('<div>').addClass('tag').text(dateTime);
 
-    // Reset the text area to placeholder
-    $('#message-compose-text').val('').blur();
+        // Create the message and display
+        let $newMess = $('<div>');
+        $newMess.addClass('message');
+        $newMess.addClass('message-user');
 
-    // Trigger bot repsonse
-    setTimeout(() => {
-        botReply(userInput);
-    },2000)
+        let $p = $('<p>').text(userInput);
+        
+        $newMess.append($p)
+        $newMess.append($tag);
+        $newMess.appendTo('#chats');
+
+        // Reset the text area to placeholder
+        $('#chat-input').val('').blur();
+
+        // Trigger bot repsonse
+        setTimeout(() => {
+            botReply(userInput);
+        },2000)
+    }
 })
 
 function botReply(userInput) {
@@ -135,10 +140,10 @@ function botReply(userInput) {
     // Create bot message and display 
     $('<div>')
     .addClass('message')
-    .addClass('bot')
+    .addClass('message-bot')
     .text(randomReply)
     .append(tag)
-    .appendTo('#messages');    
+    .appendTo('#chats');    
 }
 
    

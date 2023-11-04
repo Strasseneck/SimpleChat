@@ -1,46 +1,55 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>SimpleChat</title>
-    <link rel="stylesheet" href="styles.css">
-  </head>
-  <body>
-	<div id="main" class="container">
-        <div id="header-container" class="heading-container">
-            <div class="buttons-container" id="mode-buttons-container">
-                <button type="button" id="light-mode-btn">Light Mode</button>
-                <button type="button" id="dark-mode-btn">Dark Mode</button>
-        </div>
-        <div id="header">
-            <h1>SimpleChat</h1>
-        </div>
-            <div id="bot-buttons" class="buttons-container">
-                <button type="button" id="friendly-bot-btn">Friendly Bot</button>
-                <button type="button" id="unfriendly-bot-btn">Unfriendly Bot</button>
-                <button type="button" id="annoying-kid-bot-btn">Annoying Kid Bot</button>
-            </div>
-        </div>
-        <div id="chat-container">
-            <div id="messages" class="messages">
-                <div class="bot-messages" id="bot-messages"></div>
-                <div class="user-messages" id="user-messages"></div>
-            </div>
-    </div>
-        <div class="message-bottom-bar">
-            <div class="compose-group">
-                <input type="text" id="message-compose-text" class="form-control" autofocus placeholder="Write message...">
-                <div class="compose-group-append ">
-                    <span class="compose-group-text send-icon "><img src="send-4008.png" id="send-button"></img>
-                    </span>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>SimpleChat V2</title>
+        <link rel="stylesheet" href="styles2.css">
+    </head>
+    <body>
+        <div class="container">           
+                <!--sidebar-->
+                <div class="side-bar">
+                    <div class="header">
+                        <h1>SimpleChat</h1>
+                        <strong>Choose Your Bot!</strong>
+                    </div>                   
+                    <div class="chats-container">
+                         <!--bot selection buttons-->
+                        <div class="button-container">
+                            <img src="android.png" class="icon-button" type="button" id="friendly-bot-btn">
+                            <label class="button-label" for="friendly-bot-btn">Friendly Bot</label>
+                        </div> 
+                        <div class="button-container">
+                            <img src="bad.png" class="icon-button" type="button" id="unfriendly-bot-btn">
+                            <label class="button-label" for="unfriendly-bot-button">Unfriendly Bot</label>
+                        </div> 
+                        <div class="button-container">
+                            <img src="boy.png" type="button" class="icon-button" id="annoying-kid-bot-btn">
+                            <label class="button-label" for="annoying-kid-bot-btn">Annoying Kid Bot</label>
+                        </div>  
+                    </div>                
                 </div>
-            </div>
-        </div>    
-
-    </div>
-    <script src="jquery.js"></script>
-    <script src="script.js"></script>
-  </body>
+                <!--chatbox-->  
+                <div class="chat-box" id="chat-box">
+                    <div id="chats">
+                        <div class="message message-user">
+                            <p>This is a much longer sample message, it's really alot longer, let's see how far it fills up the screen, i hope it looks good so i can fucking move on from this shit!</p>
+                        </div>
+                        <div class="message message-bot">
+                            <p>This is a sample bot message</p>
+                        </div>
+                    </div>
+                    <!--chat message input-->
+                    <div class="chat-input-container">
+                        <div class="icon-container">
+                            <img class="icon" src="happiness.png">
+                        </div>
+                        <input type="text" id="chat-input" class="chat-input" autofocus placeholder=" Write a message...">  
+                    </div>                                                    
+                </div>           
+        </div>
+        <!--js scripts-->
+        <script src="jquery.js"></script>
+        <script src="script.js"></script>          
+    </body>
 </html>
