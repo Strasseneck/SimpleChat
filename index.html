@@ -4,6 +4,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>SimpleChat V2</title>
         <link rel="stylesheet" href="styles.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     </head>
     <body>
         <div class="container">           
@@ -11,23 +12,26 @@
                 <div class="side-bar">
                     <div class="header">
                         <h1>SimpleChat</h1>
-                        <strong>Choose Your Bot!</strong>
+                        <div class="subheading">
+                            <br>
+                            <strong>Choose Your Bot!</strong>
+                        </div>
                     </div>                   
                     <div class="chats-container">
                          <!--bot selection buttons-->
-                        <div class="button-container">
-                            <img src="android.png" class="icon-button" type="button" id="friendly-bot-btn">
+                        <div class="bot-container">
+                            <img src="android.png" type="button" class="button-icon" id="friendly-bot-btn">
                             <label class="button-label" for="friendly-bot-btn">Friendly Bot</label>
                         </div> 
-                        <div class="button-container">
-                            <img src="bad.png" class="icon-button" type="button" id="unfriendly-bot-btn">
+                        <div class="bot-container">
+                            <img src="bad.png" type="button" class="button-icon" id="unfriendly-bot-btn">
                             <label class="button-label" for="unfriendly-bot-button">Unfriendly Bot</label>
                         </div> 
-                        <div class="button-container">
-                            <img src="boy.png" type="button" class="icon-button" id="annoying-kid-bot-btn">
+                        <div class="bot-container">
+                            <img src="annoying.png" class="button-icon" id="annoying-kid-bot-btn">
                             <label class="button-label" for="annoying-kid-bot-btn">Annoying Kid Bot</label>
-                        </div>  
-                    </div>                
+                        </div> 
+                    </div>                   
                 </div>
                 <!--chatbox-->  
                 <div class="chat-box" id="chat-box">
@@ -41,8 +45,7 @@
                     </div>                                                    
                 </div>           
         </div>
-        <!--js scripts-->
-        <script src="jquery.js"></script>
+        <!--js script-->
         <script src="script.js"></script>          
     </body>
 </html>

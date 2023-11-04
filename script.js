@@ -174,7 +174,7 @@ function botReply(userInput) {
      }
      else {
         // Case annoying child
-        $bicon.attr('src', 'boy.png');
+        $bicon.attr('src', 'annoying.png');
      }
     $biconContainer.append($bicon);
 
