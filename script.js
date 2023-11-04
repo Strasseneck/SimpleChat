@@ -35,10 +35,6 @@ const annoyingKidResponses = {
     5: 'nanananananana'
 };
 
-// Light or Dark
-
-// Which bot?
-
 // Bot initial states, friendly as default
 
 let friendlyBot = true;
@@ -82,23 +78,29 @@ $('#chat-input').on('keypress', function(event) {
         // Get current date and time for tag
         let now = new Date();
         let date = now.getDate() + '/' + (now.getMonth() +1) + '/' + now.getFullYear();
-        let time = now.getHours() + ':' + now.getMinutes();
+        let hours = now.getHours();
+        let mins = now.getMinutes();
+        if(mins <= 9) {
+            mins = '0' + mins;
+        }
+        let time = hours + ':' + mins;
         let dateTime = date + ' ' + time;
         let $tag = $('<div>').addClass('tag').text(dateTime);
+        
 
         // Create the message and display
         let $newMess = $('<div>');
         $newMess.addClass('message');
         $newMess.addClass('message-user');
 
-        let $p = $('<p>').text(userInput);
+        // Add text content
+        let $p = $('<p>').text(userInput).append($tag)
         
         $newMess.append($p)
-        $newMess.append($tag);
         $newMess.appendTo('#chats');
 
-        // Reset the text area to placeholder
-        $('#chat-input').val('').blur();
+        // Reset the text area to placeholder and refocus
+        $('#chat-input').val('').blur().focus();
 
         // Trigger bot repsonse
         setTimeout(() => {
@@ -133,17 +135,25 @@ function botReply(userInput) {
     // Get current date and time for tag
     let now = new Date();
     let date = now.getDate() + '/' + (now.getMonth() +1) + '/' + now.getFullYear();
-    let time = now.getHours() + ':' + now.getMinutes();
+    let hours = now.getHours();
+    let mins = now.getMinutes();
+    if(mins <= 9) {
+        mins = '0' + mins;
+    }
+    let time = hours + ':' + mins;
     let dateTime = date + ' ' + time;
-    let tag = $('<div>').addClass('tag').html(dateTime);
+    let $btag = $('<div>').addClass('tag').text(dateTime);
 
     // Create bot message and display 
-    $('<div>')
-    .addClass('message')
-    .addClass('message-bot')
-    .text(randomReply)
-    .append(tag)
-    .appendTo('#chats');    
+    let $botMess = $('<div>')
+    $botMess.addClass('message')
+    $botMess.addClass('message-bot')
+
+    // Add text content
+    let $botp = $('<p>').text(randomReply).append($btag);
+    
+    $botMess.append($botp)
+    $botMess.appendTo('#chats');    
 }
 
    
