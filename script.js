@@ -157,8 +157,29 @@ function botReply(userInput) {
 
     // Add text content
     let $botp = $('<p>').text(randomReply).append($btag);
+
+    // Bot icon
+    let $biconContainer = $('<div>').addClass('chat-icon-container');
+    let $bicon = $('<img>').addClass('chat-icon')
     
-    $botMess.append($botp)
+    // Select correct bot icon
+
+    if(friendlyBot === true) {
+        // Case friendly bot
+        $bicon.attr('src', 'android.png');
+     }
+     else if(unfriendlyBot === true) {
+        // Case unfriendly bot
+        $bicon.attr('src', 'bad.png');
+     }
+     else {
+        // Case annoying child
+        $bicon.attr('src', 'boy.png');
+     }
+    $biconContainer.append($bicon);
+
+    $botMess.append($botp);
+    $botMess.prepend($biconContainer);
     $botMess.appendTo('#chats');    
 }
 
