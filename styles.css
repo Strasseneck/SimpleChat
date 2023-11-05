@@ -11,15 +11,16 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    background:rgb(2, 98, 171);
 }
 
 .container {
     position: relative;
+    display: flex;
     width: 1500px;
     max-width: 100%;
     height: 95vh;
-    box-shadow: 0px 3px 20px rgba(0,0,0,0.8);
-    display: flex;
+    box-shadow: 0px 3px 20px rgba(0,0,0,0.8);  
 }
 
 /* side bar */
@@ -30,7 +31,7 @@ body {
     flex-direction: column;
     justify-content:flex-start;
     flex: 15%;
-    background: rgba(244, 244, 244, 0.965);
+    background: rgb(86, 182, 255);
     border-right: solid 1px rgba(189, 187, 187, 0.965)
 }
 
@@ -40,13 +41,18 @@ body {
     align-items: center;
     text-align: center;
     margin: 40px;
+    color:mintcream;
+}
+
+.logo {
+    height: 150px;
+    width: 150px;
 }
 
 /* chat selection */
 
 .chats-select-container {
     width: 100%;
-    background: none;
 }
 
 .individual-chat-container {
@@ -56,7 +62,6 @@ body {
     width: 100%;
     margin-right:20px;
     margin-left: 10px;
-    z-index: 1;
 }
 
 .individual-chat-container p {
@@ -64,10 +69,10 @@ body {
 }
 
 .chats-select-container :hover {
-    background: rgb(57, 166, 255); 
+    background: rgb(10, 126, 221); 
 }
 
-.last-message {
+.last-seen {
     max-width: 100%;
     max-height: 100%;
     margin: 20px;
@@ -87,12 +92,11 @@ body {
 .chat-header {
     position: absolute;
     top: 0px;
-    left: 200px;
     height: 40px;
-    width: inherit;
+    width: -moz-available;
+    width: -webkit-fill-available;
     padding: 5px;
     display: flex;
-    flex-grow: 1;
     justify-content:flex-start;
     background: rgba(244, 244, 244, 0.965);
     box-shadow: 0px 0px 1px rgba(0,0,0,0.8);
@@ -107,6 +111,7 @@ body {
     display: flex;
     flex-direction: column;
     margin: 5px;
+    margin-top: 2px;
 }
 
 .header-icon {
@@ -122,9 +127,9 @@ body {
     flex: 85%; 
     background: url(background.jpg);
     background-size: 30%;  
-    width: 100%;
+    width: -moz-available;
+    width: -webkit-fill-available;
     height: 100%;
-    padding: 40px;
     padding-bottom: 40px;
     padding-right: 20px;
     overflow-x: hidden;
@@ -133,9 +138,7 @@ body {
 
 .chats-content {
     position: relative;
-    left: 200px;
-    width: calc(100% + 80px);
-    padding-right: 40px;
+    width: inherit;
     display: flex;
     flex-direction: column;
     overflow-x: hidden;
@@ -146,6 +149,8 @@ body {
     display: flex;
     width: 100%;
     margin: 10px;
+    padding-right: 20px;
+    padding-left: 20px;
 }
 
 .message-user  p {
@@ -176,7 +181,7 @@ body {
     box-shadow: 0px 3px 5px rgba(0,0,0,0.8);
 }
 
-/* /* add speech bit to messages with pseudo element, does not work in Chrome?! */
+/* /* add speech bit to messages with pseudo element !! This I basically copied from a youtube tutorial after hours of trying on my own! */
 
 .message-user p::before {
     content: '';
@@ -222,21 +227,11 @@ body {
 .chat-input-container {
    position: absolute;
    bottom: 0px;
-   left: 200px;
    height: 40px;
-   width: inherit;
+   width: -moz-available;
+   width: -webkit-fill-available;
    display: flex;
    background: rgba(244, 244, 244, 0.965); 
-}
-
-.chat-input-container-overflowing {
-    position: sticky;
-    bottom: 0px;
-    left: 200px;
-    width: inherit;
-    height: 40px;
-    display: flex;
-    background: rgba(244, 244, 244, 0.965);
 }
 
 .chat-input {
@@ -249,7 +244,7 @@ body {
 
 .icon-container {
     max-height: 40px;
-    width: 40x;
+    max-width: 40px;
     background: #ffffff;
     margin: 10px;
     opacity: 100;

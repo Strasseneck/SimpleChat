@@ -3,7 +3,7 @@
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>SimpleChat V2</title>
-        <link rel="stylesheet" href="styles.css">
+        <link type="text/css" rel="stylesheet" href="styles.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     </head>
     <body>
@@ -12,6 +12,8 @@
                 <div class="side-bar">
                     <div class="header">
                         <h1>SimpleChat</h1>
+                        <br>
+                        <img class="logo" src="chaticon.png">
                         <div class="subheading">
                             <br>
                             <strong>Choose Your Bot!</strong>
@@ -21,21 +23,21 @@
                     <div class="chats-select-container">
                         <div type="button" class="individual-chat-container" id="friendly-bot">
                             <img src="android.png" class="bot-icon">
-                            <div class="last-message">
+                            <div class="last-seen">
                                 <strong>Friendly</strong>
                                 <p>last seen recently</p>
                             </div>
                         </div> 
-                        <div class="individual-chat-container" id="unfriendly-bot">      
+                        <div class="individual-chat-container" id="unfriendly-bot">    
                             <img src="bad.png" class="bot-icon">
-                            <div class="last-message">
+                            <div class="last-seen">
                                 <strong>Rude</strong>
                                 <p>last seen recently</p>
                             </div>
                         </div>
                         <div class="individual-chat-container" id="kid-bot">   
                             <img src="annoying.png" class="bot-icon">
-                            <div class="last-message">
+                            <div class="last-seen">
                                 <strong>Annoying Kid</strong>
                                 <p>last seen recently</p>
                             </div>
