@@ -68,7 +68,6 @@ $('#annoying-kid-bot-btn').on('click', function() {
 
 // Send new message on enter
 $('#chat-input').on('keypress', function(event) {
-
     // Check it was enter key clicked
     if(event.keyCode === 13) {
 
@@ -190,15 +189,19 @@ function botReply(userInput) {
      scrollDown();
 }
 
+// Set chats to always scroll down when overflowing and change inputbar when it is
 function scrollDown() {
     console.log('scrollDown');
     let $chats = $('#chat-box');
     $chats.scrollTop($chats.prop("scrollHeight"));
+
+    // check if overflowing
+    if(($('#chats').prop('scrollHeight')) > $('#chat-box').height()) {
+        console.log('overflowing');
+        $('#chat-input-container').css('position', 'sticky');
+    }
 }
-   
 
-
-            
             
 
        
