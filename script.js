@@ -85,14 +85,18 @@ $('#kid-bot').on('click', function() {
 $('#chat-input').on('keypress', function(event) {
     // Check it was enter key clicked
     if(event.keyCode === 13) {
-
+        // Get user message 
+        let userInput = $('#chat-input').val();
+        
+        // Check it's not empty
+        if(userInput === '') {
+            return;
+        }
+                
         //Check if the bot is replying and if so clear timer so it's not one reply per msg
         if(botReplyTimer !== undefined) {
             clearTimeout(botReplyTimer);
         }
-
-        // Create user message and display 
-        let userInput = $('#chat-input').val();
 
         // Get current date and time for tag
         let now = new Date();
@@ -213,7 +217,6 @@ function botReply(userInput) {
 function scrollDown() {
     console.log('scrollDown');
     let $chatsinner = $('#chats');
-    let $chats = $('#chat-box');
     $chatsinner.scrollTop($chatsinner[0].scrollHeight);  
 }
 
