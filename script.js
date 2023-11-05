@@ -199,27 +199,19 @@ function botReply(userInput) {
     $botMess.append($botp);
     $botMess.prepend($biconContainer);
     $botMess.appendTo('#chats'); 
-    
-     // Scroll down
-     scrollDown();
+
+    // Scrolldown
+    scrollDown();
 }
 
-// Set chats to always scroll down when overflowing and change inputbar when it is
+// Set chats to always scroll down
 function scrollDown() {
     console.log('scrollDown');
+    let $chatsinner = $('#chats');
     let $chats = $('#chat-box');
-    $chats.scrollTop($chats.prop("scrollHeight"));
-
-    // check if overflowing
-    if(overflowing === false) {
-        if(($('#chats').prop('scrollHeight')) > $('#chat-box').height()) {
-            console.log('overflowing');
-            overflowing = true;
-            $('#chat-input-container').removeClass("chat-input-container").addClass('chat-input-container-overflowing');
-        }
-    }
-   
+    $chatsinner.scrollTop($chatsinner[0].scrollHeight);  
 }
+
 
             
 
