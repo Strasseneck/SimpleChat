@@ -22,7 +22,6 @@ body {
     display: flex;
 }
 
-
 /* side bar */
 
 .side-bar {
@@ -32,6 +31,7 @@ body {
     justify-content:flex-start;
     flex: 15%;
     background: rgba(244, 244, 244, 0.965);
+    border-right: solid 1px rgba(189, 187, 187, 0.965)
 }
 
 .header {
@@ -98,7 +98,17 @@ body {
 
 .chat-header p {
     font-size: 0.6em;
-    color:darkslategray;
+    color:darkslategray;  
+}
+
+.header-text-container {
+    display: flex;
+    flex-direction: column;
+    margin: 5px;
+}
+
+.header-icon {
+    margin-left: 20px;
 }
 
 .chat-box {
