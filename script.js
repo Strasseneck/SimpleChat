@@ -1,7 +1,7 @@
 // Variables
 
-// Overflowing variable for chat input
-let overflowing = false;
+// Bot timer
+let botReplyTimer;
 
 // Bot response objects
 
@@ -86,6 +86,11 @@ $('#chat-input').on('keypress', function(event) {
     // Check it was enter key clicked
     if(event.keyCode === 13) {
 
+        //Check if the bot is replying and if so clear timer so it's not one reply per msg
+        if(botReplyTimer !== undefined) {
+            clearTimeout(botReplyTimer);
+        }
+
         // Create user message and display 
         let userInput = $('#chat-input').val();
 
@@ -127,7 +132,7 @@ $('#chat-input').on('keypress', function(event) {
         scrollDown();
 
         // Trigger bot repsonse
-        setTimeout(() => {
+        botReplyTimer = setTimeout(() => {
             botReply(userInput);
         },2000)
     }
