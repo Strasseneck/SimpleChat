@@ -105,8 +105,12 @@ $('#chat-input').on('keypress', function(event) {
         $newMess.append($iconContainer)
         $newMess.appendTo('#chats');
 
+    
         // Reset the text area to placeholder and refocus
         $('#chat-input').val('').blur().focus();
+
+        // Scroll down
+        scrollDown();
 
         // Trigger bot repsonse
         setTimeout(() => {
@@ -180,9 +184,17 @@ function botReply(userInput) {
 
     $botMess.append($botp);
     $botMess.prepend($biconContainer);
-    $botMess.appendTo('#chats');    
+    $botMess.appendTo('#chats'); 
+    
+     // Scroll down
+     scrollDown();
 }
 
+function scrollDown() {
+    console.log('scrollDown');
+    let $chats = $('#chat-box');
+    $chats.scrollTop($chats.prop("scrollHeight"));
+}
    
 
 
