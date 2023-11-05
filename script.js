@@ -1,5 +1,8 @@
 // Variables
 
+// Overflowing variable for chat input
+let overflowing = false;
+
 // Bot response objects
 
 // Friendly bot
@@ -48,6 +51,10 @@ $('#friendly-bot').on('click', function() {
     friendlyBot = true;
     unfriendlyBot = false;
     annoyingKid = false;
+
+    // Change header name and icon
+    $('#header-icon').attr('src', 'android.png');
+    $('#header-name').text('Friendly Bot');
 })
 
 // Unfriendly Bot clicked
@@ -55,13 +62,21 @@ $('#unfriendly-bot').on('click', function() {
     friendlyBot = false;
     unfriendlyBot = true;
     annoyingKid = false;
+
+    // Change header name and icon
+    $('#header-icon').attr('src', 'bad.png');
+    $('#header-name').text('Rude Bot');
 })
 
 // Annoying Kid Bot clicked
-$('#annoying-kid-bot').on('click', function() {
+$('#kid-bot').on('click', function() {
     friendlyBot = false;
     unfriendlyBot = false;
     annoyingKid = true;
+
+    // Change header name and icon
+    $('#header-icon').attr('src', 'annoying.png');
+    $('#header-name').text('Annoying Kid Bot');
 })
 
 // Messaging
@@ -196,10 +211,14 @@ function scrollDown() {
     $chats.scrollTop($chats.prop("scrollHeight"));
 
     // check if overflowing
-    if(($('#chats').prop('scrollHeight')) > $('#chat-box').height()) {
-        console.log('overflowing');
-        $('#chat-input-container').css('position', 'sticky');
+    if(overflowing === false) {
+        if(($('#chats').prop('scrollHeight')) > $('#chat-box').height()) {
+            console.log('overflowing');
+            overflowing = true;
+            $('#chat-input-container').removeClass("chat-input-container").addClass('chat-input-container-overflowing');
+        }
     }
+   
 }
 
             
