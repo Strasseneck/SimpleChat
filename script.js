@@ -44,21 +44,21 @@ let annoyingKid = false;
 // Bot selection
 
 // Friendly Bot clicked
-$('#friendly-bot-btn').on('click', function() {
+$('#friendly-bot').on('click', function() {
     friendlyBot = true;
     unfriendlyBot = false;
     annoyingKid = false;
 })
 
 // Unfriendly Bot clicked
-$('#unfriendly-bot-btn').on('click', function() {
+$('#unfriendly-bot').on('click', function() {
     friendlyBot = false;
     unfriendlyBot = true;
     annoyingKid = false;
 })
 
 // Annoying Kid Bot clicked
-$('#annoying-kid-bot-btn').on('click', function() {
+$('#annoying-kid-bot').on('click', function() {
     friendlyBot = false;
     unfriendlyBot = false;
     annoyingKid = true;

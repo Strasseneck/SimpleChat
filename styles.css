@@ -29,9 +29,9 @@ body {
     position: relative;
     display: flex;
     flex-direction: column;
-    justify-content:space-evenly;
+    justify-content:flex-start;
     flex: 15%;
-    background-color: rgba(231, 242, 251, 0.965);
+    background: rgba(244, 244, 244, 0.965);
 }
 
 .header {
@@ -39,63 +39,86 @@ body {
     flex-direction: column;
     align-items: center;
     text-align: center;
+    margin: 40px;
 }
 
-.bot-container {
+/* chat selection */
+
+.chats-select-container {
+    width: 100%;
+    background: none;
+}
+
+.individual-chat-container {
     display: flex;
-    align-items: center;
-    height: 100px;
-    margin-top: 40px;
-    margin-bottom: 40px;
-    margin-left: 20px;
+    justify-content:flex-start;
+    height: 75px;
+    width: 100%;
     margin-right:20px;
-    border-radius: 20px;
-    background-color: rgba(217, 220, 222, 0.965);
-    box-shadow: 0px 2px 2px rgba(0,0,0,0.8);
+    margin-left: 10px;
+    z-index: 1;
 }
 
-.button-label {
-    text-align: center; 
+.individual-chat-container p {
+    color:darkslategray;
 }
 
-.button-icon {
-    height: 100px;
-    width: 100px;
+.chats-select-container :hover {
+    background: rgb(57, 166, 255); 
 }
 
-.bot-button {
-    margin: 10px;
-    padding: 5px;
-    box-shadow: 0px 1px 1px rgba(0,0,0,0.8);
-    background: transparent;
-    border-radius: 10px;
+.last-message {
+    max-width: 100%;
+    max-height: 100%;
+    margin: 20px;
+    overflow: hidden;
+    font-size: 0.9em;
+    background: none;
 }
 
-.bot-button :active {
-    background: rgba(57, 166, 255, 0.965);
+.bot-icon {
+    height: 75px;
+    width: 75px;
+    background: none;
 }
 
 /* Chat box messages */
 
+.chat-header {
+    position: absolute;
+    top: 0px;
+    height: 40px;
+    width: calc(100% + 80px);
+    margin-left: -40px;
+    display: flex;
+    justify-content:flex-start;
+    background: rgba(244, 244, 244, 0.965);
+    box-shadow: 0px 0px 1px rgba(0,0,0,0.8);
+}
+
+.chat-header p {
+    font-size: 0.6em;
+    color:darkslategray;
+}
+
 .chat-box {
     position: relative;
-    display: flex;
     flex: 85%; 
-    flex-direction: column-reverse;
     background: url(background.jpg);
     background-size: 30%;  
     width: 100%;
     height: 100%;
     padding: 40px;
     padding-bottom: 0px;
-    overflow-y: scroll;
     overflow-x: hidden;
 }
 
 .chats-content {
-    position: absolute;
-    top: 0;
-    width: calc(100% - 80px)
+    width: calc(100% - 80px);
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 .message {
@@ -177,7 +200,7 @@ body {
 /* Chat Input */
 
 .chat-input-container {
-   position: sticky;
+   position: absolute;
    bottom: 0px;
    height: 40px;
    width: calc(100% + 80px);

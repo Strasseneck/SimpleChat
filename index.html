@@ -16,32 +16,42 @@
                             <br>
                             <strong>Choose Your Bot!</strong>
                         </div>
-                    </div>                   
-                    <div class="chats-container">
-                         <!--bot selection buttons-->
-                        <div class="bot-container">
-                            <img src="android.png" class="button-icon">
-                            <button class="bot-button" type="button" id="friendly-bot-btn">Friendly</button>
+                    </div>
+                    <!--chat bot selection-->                
+                    <div class="chats-select-container">
+                        <div type="button" class="individual-chat-container" id="friendly-bot">
+                            <img src="android.png" class="bot-icon">
+                            <div class="last-message">
+                                <strong>Friendly</strong>
+                                <p>this it the last message sent but its too long to be seen</p>
+                            </div>
                         </div> 
-                        <div class="bot-container">
-                            <img src="bad.png" class="button-icon">
-                            <button class="bot-button" type="button" id="unfriendly-bot-btn">Unfriendly</button>
-
-                        </div> 
-                        <div class="bot-container">
-                            <img src="annoying.png" class="button-icon">
-                            <button class="bot-button" type="button" id="annoying-kid-bot-btn">Annoying Kid</button>
-                        </div> 
+                        <div class="individual-chat-container" id="unfriendly-bot">      
+                            <img src="bad.png" class="bot-icon">
+                            <div class="last-message">
+                                <strong>Rude</strong>
+                                <p>this it the last message sent but its too long to be seen</p>
+                            </div>
+                        </div>
+                        <div class="individual-chat-container" id="kid-bot">   
+                            <img src="annoying.png" class="bot-icon">
+                            <div class="last-message">
+                                <strong>Annoying Kid</strong>
+                                <p>this it the last message sent but its too long to be seen</p>
+                            </div>
+                        </div>                     
                     </div>                   
                 </div>
                 <!--chatbox-->  
                 <div class="chat-box" id="chat-box">
-                    
+                    <div id="chat-header" class="chat-header">
+                        <strong>Name</strong>
+                        <p>last seen recently</p>
+                    </div>            
                         <div class="chats-content" id="chats">  
-                        </div>
-                   
+                        </div>                  
                     <!--chat message input-->  
-                    <div class="chat-input-container">
+                    <div id="chat-input-container" class="chat-input-container">
                         <div class="icon-container">
                             <img class="icon" src="happiness.png">
                         </div>
