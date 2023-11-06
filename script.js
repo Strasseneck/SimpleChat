@@ -61,6 +61,16 @@ $('#friendly-bot').on('click', function() {
     unfriendlyBot = false;
     annoyingKid = false;
 
+    // Clear out previous bot 
+    $('.message').remove();
+    console.log('removed')
+    
+    // Loop through chat history extract and create message
+    let history = chatHistory.friendlyBotHistory;
+    history.forEach((message) => {
+        addMessage(message);
+    });
+            
     // Change header name and icon
     $('#header-icon').attr('src', 'android.png');
     $('#header-name').text('Friendly Bot');
@@ -72,6 +82,16 @@ $('#unfriendly-bot').on('click', function() {
     unfriendlyBot = true;
     annoyingKid = false;
 
+    // Clear out previous bot 
+    $('.message').remove();
+    console.log('removed')
+
+    // Loop through chat history extract and create message
+    let history = chatHistory.unfriendlyBotHistory;
+    history.forEach((message) => {
+        addMessage(message);
+    });
+
     // Change header name and icon
     $('#header-icon').attr('src', 'bad.png');
     $('#header-name').text('Rude Bot');
@@ -82,6 +102,16 @@ $('#kid-bot').on('click', function() {
     friendlyBot = false;
     unfriendlyBot = false;
     annoyingKid = true;
+
+    // Clear out previous bot 
+    $('.message').remove();
+    console.log('removed')
+
+    // Loop through chat history extract and create message
+    let history = chatHistory.annoyingKidHistory;
+    history.forEach((message) => {
+        addMessage(message);
+    });
 
     // Change header name and icon
     $('#header-icon').attr('src', 'annoying.png');
@@ -138,9 +168,9 @@ $('#chat-input').on('keypress', function(event) {
 
         // Store message in history
         let messageInfo = { 
-            user: 'user',
-            content: userInput,
-            tag: dateTime,    
+            'user': 'user',
+            'content': userInput,
+            'tag': dateTime,    
         };
 
         // Determine which bot and store history
@@ -165,7 +195,7 @@ $('#chat-input').on('keypress', function(event) {
         // Trigger bot repsonse
         botReplyTimer = setTimeout(() => {
             botReply(userInput);
-        },2000)
+        },1500)
     }
 })
 
@@ -238,9 +268,9 @@ function botReply(userInput) {
 
      // Store message in history
      let messageInfo = { 
-        user: 'bot',
-        content: randomReply,
-        tag: dateTime,    
+        'user': 'bot',
+        'content': randomReply,
+        'tag': dateTime,    
     };
 
      // Determine which bot and store history
@@ -267,7 +297,65 @@ function scrollDown() {
     $chatsinner.scrollTop($chatsinner[0].scrollHeight);  
 }
 
+// Add message function for populating chat history
+function addMessage(message) {
+    let $tag = $('<div>').addClass('tag').text(`${message['tag']}`);
+            
+            // Create the message and display
+            let $newMess = $('<div>');
+            $newMess.addClass('message');
+            $newMess.addClass('message-user');
+            
+            // case user message
+            if(message['user'] === 'user') {
+                // Add text content
+                let $p = $('<p>').text(`${message['content']}`).append($tag)
 
+                // User icon
+                let $iconContainer = $('<div>').addClass('chat-icon-container');
+                let $icon = $('<img>').addClass('chat-icon').attr('src', 'user.png');
+                $iconContainer.append($icon);
+                $newMess.append($p)
+                $newMess.append($iconContainer)
+                $newMess.appendTo('#chats');
+            }
+
+            else {
+                // Create bot message and display 
+                let $botMess = $('<div>')
+                $botMess.addClass('message')
+                $botMess.addClass('message-bot')
+
+                // Add text content
+                let $botp = $('<p>').text(`${message['content']}`).append($tag);
+
+                // Bot icon
+                let $biconContainer = $('<div>').addClass('chat-icon-container');
+                let $bicon = $('<img>').addClass('chat-icon')
+                
+                // Select correct bot icon
+
+                if(friendlyBot === true) {
+                    // Case friendly bot
+                    $bicon.attr('src', 'android.png');
+                }
+                else if(unfriendlyBot === true) {
+                    // Case unfriendly bot
+                    $bicon.attr('src', 'bad.png');
+                }
+                else {
+                    // Case annoying child
+                    $bicon.attr('src', 'annoying.png');
+                }
+                $biconContainer.append($bicon);
+
+                $botMess.append($botp);
+                $botMess.prepend($biconContainer);
+                $botMess.appendTo('#chats'); 
+            }
+            // Scroll down
+            scrollDown();
+}
             
 
        
