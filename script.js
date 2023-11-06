@@ -1,5 +1,14 @@
 // Variables
 
+// Chat History obj and arrays
+
+const chatHistory = {
+
+    friendlyBotHistory: [],
+    unfriendlyBotHistory: [],
+    annoyingKidHistory: [],
+}
+
 // Bot timer
 let botReplyTimer;
 
@@ -110,7 +119,6 @@ $('#chat-input').on('keypress', function(event) {
         let dateTime = date + ' ' + time;
         let $tag = $('<div>').addClass('tag').text(dateTime);
         
-
         // Create the message and display
         let $newMess = $('<div>');
         $newMess.addClass('message');
@@ -128,7 +136,26 @@ $('#chat-input').on('keypress', function(event) {
         $newMess.append($iconContainer)
         $newMess.appendTo('#chats');
 
-    
+        // Store message in history
+        let messageInfo = { 
+            user: 'user',
+            content: userInput,
+            tag: dateTime,    
+        };
+
+        // Determine which bot and store history
+        if(friendlyBot === true) {
+            chatHistory.friendlyBotHistory.push(messageInfo);
+        }
+        else if (unfriendlyBot === true) {
+            chatHistory.unfriendlyBotHistory.push(messageInfo);
+        }
+        else {
+            chatHistory.annoyingKidHistory.push(messageInfo)
+        }
+
+        console.log(chatHistory)
+
         // Reset the text area to placeholder and refocus
         $('#chat-input').val('').blur().focus();
 
@@ -208,6 +235,26 @@ function botReply(userInput) {
     $botMess.append($botp);
     $botMess.prepend($biconContainer);
     $botMess.appendTo('#chats'); 
+
+     // Store message in history
+     let messageInfo = { 
+        user: 'bot',
+        content: randomReply,
+        tag: dateTime,    
+    };
+
+     // Determine which bot and store history
+     if(friendlyBot === true) {
+        chatHistory.friendlyBotHistory.push(messageInfo);
+    }
+    else if (unfriendlyBot === true) {
+        chatHistory.unfriendlyBotHistory.push(messageInfo);
+    }
+    else {
+        chatHistory.annoyingKidHistory.push(messageInfo)
+    }
+
+    console.log(chatHistory);
 
     // Scrolldown
     scrollDown();
