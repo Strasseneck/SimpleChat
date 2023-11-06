@@ -61,6 +61,14 @@ $('#friendly-bot').on('click', function() {
     unfriendlyBot = false;
     annoyingKid = false;
 
+    // Reset the text area to placeholder and refocus
+    $('#chat-input').val('').blur().focus();
+
+    // clear out reply timer to avoid wrong bot reply
+    if(botReplyTimer !== undefined) {
+        clearTimeout(botReplyTimer);
+    }
+
     // Clear out previous bot 
     $('.message').remove();
     console.log('removed')
@@ -72,7 +80,7 @@ $('#friendly-bot').on('click', function() {
     });
             
     // Change header name and icon
-    $('#header-icon').attr('src', 'android.png');
+    $('#header-icon').attr('src', 'static/android.png');
     $('#header-name').text('Friendly Bot');
 })
 
@@ -81,6 +89,14 @@ $('#unfriendly-bot').on('click', function() {
     friendlyBot = false;
     unfriendlyBot = true;
     annoyingKid = false;
+
+    // Reset the text area to placeholder and refocus
+    $('#chat-input').val('').blur().focus();
+
+    // clear out reply timer to avoid wrong bot reply
+    if(botReplyTimer !== undefined) {
+        clearTimeout(botReplyTimer);
+    }
 
     // Clear out previous bot 
     $('.message').remove();
@@ -93,7 +109,7 @@ $('#unfriendly-bot').on('click', function() {
     });
 
     // Change header name and icon
-    $('#header-icon').attr('src', 'bad.png');
+    $('#header-icon').attr('src', 'static/bad.png');
     $('#header-name').text('Rude Bot');
 })
 
@@ -103,6 +119,14 @@ $('#kid-bot').on('click', function() {
     unfriendlyBot = false;
     annoyingKid = true;
 
+    // Reset the text area to placeholder and refocus
+    $('#chat-input').val('').blur().focus();
+    
+    // clear out reply timer to avoid wrong bot reply
+    if(botReplyTimer !== undefined) {
+        clearTimeout(botReplyTimer);
+    }
+    
     // Clear out previous bot 
     $('.message').remove();
     console.log('removed')
@@ -114,7 +138,7 @@ $('#kid-bot').on('click', function() {
     });
 
     // Change header name and icon
-    $('#header-icon').attr('src', 'annoying.png');
+    $('#header-icon').attr('src', 'static/annoying.png');
     $('#header-name').text('Annoying Kid Bot');
 })
 
@@ -159,7 +183,7 @@ $('#chat-input').on('keypress', function(event) {
 
         // User icon
         let $iconContainer = $('<div>').addClass('chat-icon-container');
-        let $icon = $('<img>').addClass('chat-icon').attr('src', 'user.png');
+        let $icon = $('<img>').addClass('chat-icon').attr('src', 'static/user.png');
         $iconContainer.append($icon);
         
         $newMess.append($p)
@@ -250,15 +274,15 @@ function botReply(userInput) {
 
     if(friendlyBot === true) {
         // Case friendly bot
-        $bicon.attr('src', 'android.png');
+        $bicon.attr('src', 'static/android.png');
      }
      else if(unfriendlyBot === true) {
         // Case unfriendly bot
-        $bicon.attr('src', 'bad.png');
+        $bicon.attr('src', 'static/bad.png');
      }
      else {
         // Case annoying child
-        $bicon.attr('src', 'annoying.png');
+        $bicon.attr('src', 'static/annoying.png');
      }
     $biconContainer.append($bicon);
 
@@ -313,7 +337,7 @@ function addMessage(message) {
 
                 // User icon
                 let $iconContainer = $('<div>').addClass('chat-icon-container');
-                let $icon = $('<img>').addClass('chat-icon').attr('src', 'user.png');
+                let $icon = $('<img>').addClass('chat-icon').attr('src', 'static/user.png');
                 $iconContainer.append($icon);
                 $newMess.append($p)
                 $newMess.append($iconContainer)
@@ -337,15 +361,15 @@ function addMessage(message) {
 
                 if(friendlyBot === true) {
                     // Case friendly bot
-                    $bicon.attr('src', 'android.png');
+                    $bicon.attr('src', 'static/android.png');
                 }
                 else if(unfriendlyBot === true) {
                     // Case unfriendly bot
-                    $bicon.attr('src', 'bad.png');
+                    $bicon.attr('src', 'static/bad.png');
                 }
                 else {
                     // Case annoying child
-                    $bicon.attr('src', 'annoying.png');
+                    $bicon.attr('src', 'static/annoying.png');
                 }
                 $biconContainer.append($bicon);
 
