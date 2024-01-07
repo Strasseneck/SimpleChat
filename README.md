@@ -1,4 +1,4 @@
-q]# SimpleChat
+# SimpleChat
 A simple one page chat app made as part of the Codeworks submission process. 
 
 # Features
