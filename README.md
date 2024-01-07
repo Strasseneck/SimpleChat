@@ -11,7 +11,7 @@ A simple one page chat app made as part of the Codeworks submission process.
 
 * three different chat bots with randomized replies
 
-!Alt text](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZ2IybmQ1a3h1M2hqczUzY3VqcDd4Z3NzNjlrd2lxdmkxZDlxa205bSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/UjyFVgnMNibIKjI2NY/giphy.gif)
+![Alt text](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZ2IybmQ1a3h1M2hqczUzY3VqcDd4Z3NzNjlrd2lxdmkxZDlxa205bSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/UjyFVgnMNibIKjI2NY/giphy.gif)
 
 * chat history for each bot as if it's real chat
  
