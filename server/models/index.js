@@ -1,10 +1,8 @@
-import { Pool } from 'pg';
+import { Sequelize } from 'sequelize';
 
-const pool = new Pool({
-    user: 'postgres',
-    host: 'localhost',
-    password: 'pandemonium',
-    port: 5432,
-});
+const sequelize = new Sequelize ('simplechatdb', 'postgres', `${password}`, {
+    host: '127.0.0.1',
+    dialect: 'postgres'
+})
 
-module.exports = pool;
+module.exports = sequelize;

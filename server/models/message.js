@@ -1,19 +1,19 @@
-import pool from 'pool';
+import sequelize from ('./index')
+import { Datatypes, Chat } from 'sequelize';
 
-exports.getAllMessages = async () => {
-    try {
-        const res = await pool.query(GET MESSAGES)
-        return res.rows;
-    } catch (error) {
-        throw new Error(error);
+module.exports = sequelize.define('Message', {
+    user: {
+        type: Datatypes.STRING,
+        allowNull: false
+    },
+    content: {
+        type: Datatypes.STRING,
+        allowNull: false
+    },
+    tag: {
+        type: Datatypes.STRING,
+        allowNull: false
     }
-}
+});
 
-exports.addNewMessage = async () => {
-    try {
-        const res = await pool.query(POST MESSAGE)
-        return res
-    } catch (error) {
-        throw new Error(error);
-    }
-}
+sequelize.Message.belongsTo(Chat);
