@@ -1,5 +1,5 @@
 # SimpleChat
-A simple one page chat app made as part of the Codeworks submission process. 
+A simple one page chat app. I've begun to build that backend to replace the hardcoded bots with api calls.
 
 # Features
 
