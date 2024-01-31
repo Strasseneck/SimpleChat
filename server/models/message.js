@@ -1,5 +1,7 @@
-module.exports = (sequelize, Datatypes) => {
-    Message = sequelize.define('Message', {
+import sequelize from ('./index');
+import { Datatypes } from 'sequelize';
+
+module.exports = sequelize.define('Message', {
             user: {
                 type: Datatypes.STRING,
                 allowNull: false
@@ -13,15 +15,3 @@ module.exports = (sequelize, Datatypes) => {
                 allowNull: false
             }
     });
-    
-    Message.associate = models => {
-        Message.belongsTo(models.Chat, {
-            foreignKey: {
-                allowNull: false
-            },
-            onDelete: "cascade"
-        });
-    };
-    
-    return Message;
-}
