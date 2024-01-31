@@ -1,7 +1,7 @@
-import sequelize from ('./index');
-import { Datatypes, Message } from 'sequelize';
+import { sequelize } from './index.js';
+import {Datatypes, Message }  from 'sequelize';
 
-module.exports = sequelize.define('Chat', {
+const Chat = sequelize.define('Chat', {
         Bot: {
             type: Datatypes.STRING,
             allowNull: false,
@@ -9,3 +9,5 @@ module.exports = sequelize.define('Chat', {
     });
     Chat.hasMany(Message);
     Message.belongsTo(Chat);
+    
+export { Chat }

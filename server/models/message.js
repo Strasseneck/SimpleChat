@@ -1,7 +1,7 @@
-import sequelize from ('./index');
-import { Datatypes } from 'sequelize';
+import { sequelize } from './index.js';
+import Datatypes  from 'sequelize';
 
-module.exports = sequelize.define('Message', {
+const Message = sequelize.define('Message', {
             user: {
                 type: Datatypes.STRING,
                 allowNull: false
@@ -15,3 +15,5 @@ module.exports = sequelize.define('Message', {
                 allowNull: false
             }
     });
+
+ export { Message };

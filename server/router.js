@@ -1,12 +1,11 @@
 import Router from 'koa-router';
-import messageController from ('./controllers/messageController');
+import { getMessages, addMessage } from './controllers/messageController.js';
 
 const router = new Router();
 
-router.get('/messages', messageController.getMessages);
-router.post('/messages', messageController.postMessage);
+router.get('/messages', getMessages);
+router.post('/messages', addMessage);
 
-router.get('/chat', chatController.getChat);
+// router.get('/chat', getChat);
 
-
-module.exports = router;
+export { router }
