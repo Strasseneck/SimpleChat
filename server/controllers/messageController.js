@@ -1,4 +1,5 @@
 import { Message } from '../models/message.js';
+import { Chat } from '../models/chat.js';
 
 
 const getMessages = async (ctx) => {

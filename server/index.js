@@ -8,16 +8,15 @@ import { router } from './router.js';
 const app = new Koa();
 const PORT = 3000;
 
-
+app.use(serve('../client'))
 app
-  .use(serve('../client'))
   .use(bodyParser())
   .use(router.routes())
   .use(router.allowedMethods());
 
 
 async function bootstrap () {
-    await sequelize.sync();
+    await sequelize.sync({force: true});
     app.listen(PORT)
     console.log(`Server running at http://localhost:${PORT}`)
 }

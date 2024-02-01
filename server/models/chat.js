@@ -1,5 +1,5 @@
 import { sequelize } from './index.js';
-import {Datatypes }  from 'sequelize';
+import Datatypes   from 'sequelize';
 import { Message } from './message.js';
 
 const Chat = sequelize.define('Chat', {
