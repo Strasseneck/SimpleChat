@@ -1,10 +1,8 @@
-import { annoyingKidReplies } from "../server/controllers/botReplies";
-
 // Bot timer
 let botReplyTimer;
 
 // friendly bot by default
-const currentBot = friendlyBot;
+const currentBot = 'friendlyBot';
 
 // class for messages
 class Message {
@@ -17,7 +15,7 @@ class Message {
 
 // Friendly Bot clicked
 $('#friendly-bot').on('click', function() {
-    currentBot = friendlyBot;
+    currentBot = 'friendlyBot';
 
     // Reset the text area to placeholder and refocus
     $('#chat-input').val('').blur().focus();
@@ -43,7 +41,7 @@ $('#friendly-bot').on('click', function() {
 
 // Unfriendly Bot clicked
 $('#unfriendly-bot').on('click', function() {
-    currentBot = unfriendlyBot;
+    currentBot = 'unfriendlyBot';
 
     // Reset the text area to placeholder and refocus
     $('#chat-input').val('').blur().focus();
@@ -69,7 +67,7 @@ $('#unfriendly-bot').on('click', function() {
 
 // Annoying Kid Bot clicked
 $('#kid-bot').on('click', function() {
-    currentBot = annoyingKid;
+    currentBot = 'annoyingKid';
 
     // Reset the text area to placeholder and refocus
     $('#chat-input').val('').blur().focus();
