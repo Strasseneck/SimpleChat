@@ -8,6 +8,4 @@ router.get('/botreply', generateReply);
 router.get('/messages', getMessages);
 router.post('/messages', addMessage);
 
-// router.get('/chat', getChat);
-
 export { router }

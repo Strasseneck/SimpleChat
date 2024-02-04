@@ -2,13 +2,14 @@ import { sequelize } from './index.js';
 import Datatypes   from 'sequelize';
 import { Message } from './message.js';
 
-const Chat = sequelize.define('Chat', {
-        Bot: {
+const User = sequelize.define('User', {
+        name: {
             type: Datatypes.STRING,
             allowNull: false,
+            unique: true
         }
     });
-    Chat.hasMany(Message);
-    Message.belongsTo(Chat);
+    User.hasMany(Message);
+    Message.belongsTo(User);
   
-export { Chat }
+export { User }

@@ -2,7 +2,7 @@ import { sequelize } from './index.js';
 import Datatypes  from 'sequelize';
 
 const Message = sequelize.define('Message', {
-            user: {
+            author: {
                 type: Datatypes.STRING,
                 allowNull: false
             },
@@ -10,7 +10,7 @@ const Message = sequelize.define('Message', {
                 type: Datatypes.STRING,
                 allowNull: false
             },
-            tag: {
+            timestamp: {
                 type: Datatypes.STRING,
                 allowNull: false
             }
