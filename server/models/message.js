@@ -15,15 +15,5 @@ const Message = sequelize.define('Message', {
                 allowNull: false
             }
     });
-
-
-// const Chat = sequelize.define('Chat', {
-//     Bot: {
-//         type: Datatypes.STRING,
-//         allowNull: false,
-//     }
-// });
-// Chat.hasMany(Message);
-// Message.belongsTo(Chat);
   
 export { Message };

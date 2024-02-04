@@ -16,7 +16,7 @@ app
 
 
 async function bootstrap () {
-    await sequelize.sync({force: true});
+    await sequelize.sync();
     app.listen(PORT)
     console.log(`Server running at http://localhost:${PORT}`)
 }
