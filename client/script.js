@@ -122,10 +122,13 @@ $('#chat-input').on('keypress', function(event) {
         scrollDown();
 
         // Trigger bot repsonse
-        botReplyTimer = setTimeout(() => {
+        botReplyTimer = setTimeout(async () => {
             // get reply and display
-            const reply = getBotReply(currentBot);
-
+            const reply = await getBotReply(currentBot);
+            const dateTime = getDatetime();
+            const newBotMessage = new Message(currentBot, reply, dateTime);
+            displayMessage(newBotMessage);
+            scrollDown();
         },1500)
     }
 })
