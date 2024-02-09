@@ -3,11 +3,25 @@ import { User } from '../models/user.js';
 
 const getMessages = async (ctx) => {
     try {
+        // retrieve user info for bot
         const bot = ctx.get('bot');
-        const messages = await bot.getMessages();
-        ctx.status = 200;
-        ctx.body = messages;
+        let user = await User.findOne({
+            where: { name: bot }
+        });
+        if(!user) {
+            ctx.message = `No history for ${bot}`
+            ctx.body = {}
+            ctx.status = 200;
+        }
+        else {
+            // retrieve messag history
+            console.log(`retrieving history for ${user.name}`)
+            const messages = await Message.findAll({where: { UserId: user.id}});
+            ctx.status = 200;
+            ctx.body = messages;
+        }
     } catch (error) {
+        console.log(`THROWING AN ERROR ${error}`)
         ctx.message = `${error}`
         ctx.throw(404);
     }
@@ -16,7 +30,6 @@ const getMessages = async (ctx) => {
 const addMessage = async (ctx) => {
     try {
         const newMessage = ctx.request.body;
-
         let user = await User.findOne({
             where: { name: newMessage.author }
         });

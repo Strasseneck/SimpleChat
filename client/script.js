@@ -4,6 +4,27 @@ let botReplyTimer;
 // friendly bot by default
 let currentBot = 'friendlyBot';
 
+const chatHistory = {
+    friendlyBotHistory: [],
+    unfriendlyBotHistory: [],
+    kidBotHistory: []
+}
+
+// get history
+window.onload =  async () => {
+    console.log('window on load function')
+    chatHistory.friendlyBotHistory = await getChatHistory('friendlyBot');
+    chatHistory.unfriendlyBotHistory = await getChatHistory('unfriendlyBot');
+    chatHistory.kidBotHistory = await getChatHistory('kidBotHistory');
+
+    console.log(chatHistory.friendlyBotHistory);
+
+    // display friendly bot as default
+    chatHistory.friendlyBotHistory.forEach((message) => {
+        displayMessage(message);
+    });
+}
+
 // class for messages
 class Message {
     constructor(author, content, timestamp) {
@@ -31,7 +52,7 @@ $('#friendly-bot').on('click', function () {
     // Loop through chat history extract and create message
     let history = chatHistory.friendlyBotHistory;
     history.forEach((message) => {
-        addMessage(message);
+        displayMessage(message);
     });
 
     // Change header name and icon
@@ -57,7 +78,7 @@ $('#unfriendly-bot').on('click', function () {
     // Loop through chat history extract and create message
     let history = chatHistory.unfriendlyBotHistory;
     history.forEach((message) => {
-        addMessage(message);
+        displayMessage(message);
     });
 
     // Change header name and icon
@@ -83,7 +104,7 @@ $('#kid-bot').on('click', function () {
     // Loop through chat history extract and create message
     let history = chatHistory.annoyingKidHistory;
     history.forEach((message) => {
-        addMessage(message);
+        displayMessage(message);
     });
 
     // Change header name and icon
@@ -205,12 +226,12 @@ async function displayMessage(message) {
     // Scroll down
     scrollDown();
 
-   try {
-     saveMessage (message);
-   }
-   catch (error) {
-    console.error (error);
-   }
+    try {
+        saveMessage(message);
+    }
+    catch (error) {
+        console.error(error);
+    }
 };
 
 // Save message function
@@ -236,26 +257,24 @@ async function saveMessage(message) {
 
 // Get chat history
 async function getChatHistory(bot) {
-    let chatHistory;
     try {
-        const response = await fetch('/getMessages', {
+        console.log('TRYING')
+        const response = await fetch('/messages', {
             method: 'GET',
-            headers: { bot: bot }
+            headers: {
+                "Content-Type": 'application/json',
+                "bot": bot }
         });
         if (!response.ok) {
+            console.log(response)
             throw new Error(`HTTP error! status: ${response.status}`)
         }
-        chatHistory = await response.json();
+        const chatHistory = await response.json();
+        console.log(`chat history retrieved: ${chatHistory}`);
+        return chatHistory;
     }
     catch (error) {
         console.error(error);
-    }
-    finally {
-        console.log(`chat history retrieved: ${chatHistory}`);
-        // Loop through chat history extract and create message
-        chatHistory.forEach((message) => {
-            displayMessageMessage(message);
-        });
     }
 
 }
