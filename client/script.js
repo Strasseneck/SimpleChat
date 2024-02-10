@@ -17,12 +17,15 @@ window.onload =  async () => {
     chatHistory.unfriendlyBotHistory = await getChatHistory('unfriendlyBot');
     chatHistory.kidBotHistory = await getChatHistory('kidBotHistory');
 
-    console.log(chatHistory.friendlyBotHistory);
+    console.log(chatHistory);
 
     // display friendly bot as default
-    chatHistory.friendlyBotHistory.forEach((message) => {
-        displayMessage(message);
-    });
+    if (chatHistory.friendlyBotHistory.length) {
+        chatHistory.friendlyBotHistory.forEach((message) => {
+            displayMessage(message);
+        });
+    }
+   
 }
 
 // class for messages
@@ -174,7 +177,7 @@ async function getBotReply(bot) {
     try {
         const response = await fetch('/botreply', {
             method: 'GET',
-            headers: { bot: bot }
+            headers: { Bot: bot }
         });
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
@@ -241,7 +244,8 @@ async function saveMessage(message) {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Chat': currentBot
             },
             body: JSON.stringify(message)
         });
@@ -258,12 +262,11 @@ async function saveMessage(message) {
 // Get chat history
 async function getChatHistory(bot) {
     try {
-        console.log('TRYING')
         const response = await fetch('/messages', {
             method: 'GET',
             headers: {
                 "Content-Type": 'application/json',
-                "bot": bot }
+                "Bot": bot }
         });
         if (!response.ok) {
             console.log(response)

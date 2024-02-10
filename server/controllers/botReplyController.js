@@ -2,7 +2,7 @@ import { botReplies } from "./botReplies.js";
 
 const generateReply = async (ctx) => {
     try {
-    const bot = ctx.get('bot');
+    const bot = ctx.get('Bot');
     //Generate random reply from options make sure not 0
      let replyIndex = Math.floor(Math.random() * 5);
      while(replyIndex === 0) {

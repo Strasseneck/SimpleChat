@@ -1,22 +1,22 @@
 import { Message } from '../models/message.js';
-import { User } from '../models/user.js';
+import { Chat } from '../models/chat.js';
 
 const getMessages = async (ctx) => {
     try {
         // retrieve user info for bot
-        const bot = ctx.get('bot');
-        let user = await User.findOne({
+        const bot = ctx.get('Bot');
+        let chat = await Chat.findOne({
             where: { name: bot }
         });
-        if(!user) {
+        if(!chat) {
             ctx.message = `No history for ${bot}`
             ctx.body = {}
             ctx.status = 200;
         }
         else {
             // retrieve messag history
-            console.log(`retrieving history for ${user.name}`)
-            const messages = await Message.findAll({where: { UserId: user.id}});
+            console.log(`retrieving history for ${chat.name}`)
+            const messages = await Message.findAll({where: { ChatId: chat.id}});
             ctx.status = 200;
             ctx.body = messages;
         }
@@ -30,19 +30,20 @@ const getMessages = async (ctx) => {
 const addMessage = async (ctx) => {
     try {
         const newMessage = ctx.request.body;
-        let user = await User.findOne({
-            where: { name: newMessage.author }
+        const chat = ctx.get('Chat')
+        let user = await Chat.findOne({
+            where: { name: newMessage.chat }
         });
 
         if (!user) {
-            user = await User.create({ name: newMessage.author });
+            user = await Chat.create({ name: newMessage.chat });
         }
 
         const savedMessage = await Message.create({
             author: newMessage.author,
             content: newMessage.content,
             timestamp: newMessage.timestamp,
-            UserId: user.id
+            ChatId: chat.id
         });
 
         ctx.status = 201;
