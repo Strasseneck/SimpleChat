@@ -2,9 +2,9 @@ import { Message } from '../models/message.js';
 import { Chat } from '../models/chat.js';
 
 const getMessages = async (ctx) => {
+    const bot = ctx.request.params.bot;
+    console.log(bot);
     try {
-        // retrieve user info for bot
-        const bot = ctx.get('Bot');
         let chat = await Chat.findOne({
             where: { name: bot }
         });
@@ -37,7 +37,6 @@ const addMessage = async (ctx) => {
         if (!chat) {
             chat = await Chat.create({ name: currentChat });
         }
-
         const savedMessage = await Message.create({
             author: newMessage.author,
             content: newMessage.content,
