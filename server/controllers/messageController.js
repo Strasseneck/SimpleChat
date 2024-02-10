@@ -30,13 +30,12 @@ const getMessages = async (ctx) => {
 const addMessage = async (ctx) => {
     try {
         const newMessage = ctx.request.body;
-        const chat = ctx.get('Chat')
-        let user = await Chat.findOne({
-            where: { name: newMessage.chat }
+        const currentChat = ctx.get('Chat')
+        let chat = await Chat.findOne({
+            where: { name: currentChat }
         });
-
-        if (!user) {
-            user = await Chat.create({ name: newMessage.chat });
+        if (!chat) {
+            chat = await Chat.create({ name: currentChat });
         }
 
         const savedMessage = await Message.create({

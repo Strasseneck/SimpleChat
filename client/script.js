@@ -13,19 +13,18 @@ const chatHistory = {
 // get history
 window.onload =  async () => {
     console.log('window on load function')
+
+    // retrieve all stored history for each chat
     chatHistory.friendlyBotHistory = await getChatHistory('friendlyBot');
     chatHistory.unfriendlyBotHistory = await getChatHistory('unfriendlyBot');
     chatHistory.kidBotHistory = await getChatHistory('kidBotHistory');
-
-    console.log(chatHistory);
 
     // display friendly bot as default
     if (chatHistory.friendlyBotHistory.length) {
         chatHistory.friendlyBotHistory.forEach((message) => {
             displayMessage(message);
         });
-    }
-   
+    } 
 }
 
 // class for messages
@@ -80,10 +79,14 @@ $('#unfriendly-bot').on('click', function () {
 
     // Loop through chat history extract and create message
     let history = chatHistory.unfriendlyBotHistory;
-    history.forEach((message) => {
-        displayMessage(message);
-    });
+    // check there is a history
 
+    if (history && history.length) {
+        history.forEach((message) => {
+            displayMessage(message);
+        });
+    }
+   
     // Change header name and icon
     $('#header-icon').attr('src', './static/unfriendlyBot.png');
     $('#header-name').text('Rude Bot');
@@ -106,10 +109,13 @@ $('#kid-bot').on('click', function () {
 
     // Loop through chat history extract and create message
     let history = chatHistory.annoyingKidHistory;
-    history.forEach((message) => {
-        displayMessage(message);
-    });
-
+    
+    // Check there is a history
+    if (history && history.length) {
+        history.forEach((message) => {
+            displayMessage(message);
+        });
+    }
     // Change header name and icon
     $('#header-icon').attr('src', './static/annoyingKid.png');
     $('#header-name').text('Annoying Kid Bot');
@@ -121,7 +127,7 @@ $('#kid-bot').on('click', function () {
 $('#chat-input').on('keypress', (event) => sendMessage(event));
 
 // Send message function
-function sendMessage(event) {
+function sendMessage (event) {
     // Check it was enter key clicked
     if (event.keyCode === 13) {
         // Get user message 
@@ -160,7 +166,7 @@ function sendMessage(event) {
     }
 }
 
-function getDatetime() {
+function getDatetime () {
     // Get current date and time for tag
     let now = new Date();
     let date = now.getDate() + '/' + (now.getMonth() + 1) + '/' + now.getFullYear();
@@ -197,7 +203,7 @@ function scrollDown() {
 }
 
 // Add message function for populating chat history
-async function displayMessage(message) {
+async function displayMessage (message) {
 
     const type = message.author === 'user' ? 'user' : 'bot';
     let $tag = $('<div>')
@@ -238,7 +244,7 @@ async function displayMessage(message) {
 };
 
 // Save message function
-async function saveMessage(message) {
+async function saveMessage (message) {
     try {
         const response = await fetch('/messages', {
             method: 'POST',
@@ -260,7 +266,7 @@ async function saveMessage(message) {
 }
 
 // Get chat history
-async function getChatHistory(bot) {
+async function getChatHistory (bot) {
     try {
         const response = await fetch('/messages', {
             method: 'GET',
