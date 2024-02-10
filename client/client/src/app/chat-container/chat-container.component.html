@@ -1,6 +1,3 @@
-<div class="chats-content" id="chats">
-    <li *ngFor="let message of chatHistory">
-        <p>{{ message.author }}</p>
-        <p>{{ message.content }}</p>
-    </li>
+<div class="chats-content" *ngFor="let message of chatHistory">
+  <app-message [message]="message"></app-message>
 </div>    

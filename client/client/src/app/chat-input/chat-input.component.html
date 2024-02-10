@@ -2,5 +2,6 @@
     <div class="icon-container">
         <img class="icon" src="../../assets/happiness.png">
     </div>
-    <input type="text" id="chat-input" class="chat-input" autofocus placeholder=" Write a message...">  
+    <input [(ngModel)]="content" type="text" id="chat-input" class="chat-input" autofocus placeholder=" Write a message..."> 
+    <button class="simple-btn" id="send-button" (click)="saveMessage(content)">Send</button>
 </div>   
