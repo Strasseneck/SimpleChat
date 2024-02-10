@@ -56,7 +56,7 @@ $('#friendly-bot').on('click', function () {
     });
 
     // Change header name and icon
-    $('#header-icon').attr('src', 'static/android.png');
+    $('#header-icon').attr('src', './static/friendlyBot.png');
     $('#header-name').text('Friendly Bot');
 })
 
@@ -82,7 +82,7 @@ $('#unfriendly-bot').on('click', function () {
     });
 
     // Change header name and icon
-    $('#header-icon').attr('src', 'static/bad.png');
+    $('#header-icon').attr('src', './static/unfriendlyBot.png');
     $('#header-name').text('Rude Bot');
 })
 
@@ -108,7 +108,7 @@ $('#kid-bot').on('click', function () {
     });
 
     // Change header name and icon
-    $('#header-icon').attr('src', 'static/annoying.png');
+    $('#header-icon').attr('src', './static/annoyingKid.png');
     $('#header-name').text('Annoying Kid Bot');
 })
 
